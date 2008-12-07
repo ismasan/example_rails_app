@@ -1,0 +1,177 @@
+// main reset
+body,form,ul,ol,li,dl,dd,dt,p,h1,h2,h3,h4,h5,h6
+  :padding 0
+  :margin 0
+  
+// general
+ul,ol
+  :margin-left 1.5em
+
+p
+  :margin-bottom 1.8em
+  
+html,body,div,p
+  :font-family "Lucida Grande", Tahoma, Arial, Verdana, sans-serif
+  :font-weight normal
+  :color #333333
+
+input,select,textarea
+  :font-family "Lucida Grande", Tahoma, Arial, Verdana, sans-serif
+  :font-weight normal
+  :color #222222
+
+body
+  :font-size 62.5%
+  :text-align center
+  :background #eee
+  
+.main_width
+  :width 960px
+  :margin 0 auto
+  :text-align left
+
+.menu
+  :margin-left 0
+  :list-style-type none
+  li
+    :float left
+    :margin-right 1em
+    
+#header a
+  :color #eee
+  &:hover
+    :color #fff
+    
+#main a
+  :color blue
+  &:hover
+    :color orange
+
+// header
+#logo
+  :font-size 2em
+  a
+    :text-decoration none
+
+// nav
+#nav
+  :margin-top 10px
+  a
+    :text-decoration none
+    :font-size 1.5em
+    :display block
+    :background #666
+    :padding .25em 1em
+    &:hover
+      :background #999
+  li.current
+    a
+      :background #eee
+      :color #000
+    
+#header
+  :background #333
+  :margin-bottom 2em
+  .main_width
+    :padding-top 10px
+
+// sections (margins)
+.section
+  :margin-bottom 2em
+  
+// columns
+.column
+  :float left
+  
+.column_right
+  :float right
+
+#main
+  :position relative
+  
+// primary content area
+#primary
+  :background #fff
+  :border solid silver 8px
+  :margin-right 250px
+  .section
+    :margin
+      :left 2em
+      :right 2em
+      
+// secondary (sidebar)
+#secondary
+  :position absolute
+  :top 0
+  :right 0
+  :width 230px
+
+// index of models
+ul.index
+  :list-style-type none
+  :margin-left 0
+
+.listing
+  :position relative
+  .media
+    :position absolute
+    :top 0
+    :left 0
+  p
+    :margin-bottom 0
+  .detail
+    :margin-left 90px
+  h4
+    :font-size 1.5em
+
+.thumb
+  img
+    :padding 2px
+    :border solid silver 1px
+  &:hover
+    img
+      :border-color gray
+    
+.publish_status
+  :display inline-block
+  :padding .25em 0
+  :width 6em
+  :text-align center
+  :color #fff
+
+.status_published
+  :background green
+.status_draft
+  :background red
+.status_upcoming
+  :background pink
+.status_expired
+  :background silver
+  
+p.meta
+  :margin 0
+ 
+// hacks
+.clearfix:after
+  :content "."
+  :display block
+  :clear both
+  :visibility hidden
+  :line-height 0
+  :height 0
+
+.clearfix 
+  :display inline-block
+
+html[xmlns] .clearfix 
+  :display block
+
+
+* html .clearfix 
+  :height 1%
+
+.clearfix 
+  :display inline-block
+
+.clearfix 
+  :display block

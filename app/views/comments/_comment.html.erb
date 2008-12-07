@@ -1,0 +1,7 @@
+<li class="<%= cycle('odd','even') %> position_<%= comment_counter %>">
+	<div class="detail">
+	<strong><%= link_to 'Some user said',post_comment_path(comment.post,comment) %> on 
+	<em><%= comment.created_at.to_s(:short) %></em>:</strong>
+	<%= simple_format(comment.body) %>
+	</div>
+</li>

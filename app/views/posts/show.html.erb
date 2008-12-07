@@ -1,0 +1,19 @@
+<div id="title_bar">
+	<h1><%= h(resource.title) %></h1>
+	<%= link_to 'edit', edit_post_path(resource) %>
+</div>
+
+<p class="meta">
+	Posted on <%= resource.created_at.to_s(:short) %> | <%= resource.comments.count %> comments.
+</p>
+
+<div id="post_body">
+	<%= simple_format(resource.body) %>
+</div>
+<!-- Use rails convention for collection partials -->
+
+<h3>Comments</h3>
+
+<ul class="comments_list clearfix">
+	<%= render :partial => resource.comments.desc %>
+</ul>

@@ -1,0 +1,151 @@
+/*
+General, typography, font sizes
+----------------------------------------------------------*/
+form,table,ul,ol,dl,body,h1,h2,h3,h4,h5,h6,p {
+	margin:0;
+	padding:0;
+}
+body {
+	font-family:helvetica,'lucida grande',verdana,arial,sans-serif;
+	font-size:12px;
+	background:#eaeaea;
+}
+h1 {
+	font-size:130%;
+}
+h2 {
+	font-size:1em;
+	margin-bottom:1em;
+}
+h3,h4,h5,h6 {
+	font-size:100%;
+}
+ul,ol {
+	margin-left:1.5em;
+}
+li {
+	margin-bottom:0;
+}
+p {
+	margin-bottom:1.5em;
+}
+textarea {height: 5em;}
+/*
+Basic layout
+----------------------------------------------------------*/
+* html body {
+	text-align:center;
+}
+
+#wrapper {width:80%;margin:0 auto;background:white;}
+#header {color:white;padding:2em;background:black;}
+#header h2 {width:200px;}
+#header h2 a {color:black;text-decoration:none;display:block;background:#eee;padding:1em;}
+#header h2 a:hover {background-color:white;}
+
+#nav {list-style-type:none;margin-left:0;background:black;padding:0 2em;}
+#nav li	{float:left;margin-right:.5em;}
+#nav a {display:block;padding:.25em 2em;color:#eee;font-size:1.5em;text-decoration:none;background:#666666;}
+#nav a:hover		{background:silver;}
+#nav li.current a	{color:black;background-color:white;}
+#main {position:relative;padding:2em 350px 2em 2em;}
+
+#primary {}
+
+#primary h3	{border-bottom:solid silver 1px;padding:.5em 0;margin:0 0 1em 0;font-size:1.5em;}
+#secondary {width:330px;position:absolute;top:20px;right:10px;border:solid gray 1px;background:#eee;}
+
+#secondary .section {margin:1em;}
+
+#secondary .section h3	{font-size:1.2em;margin-bottom:2em;}
+
+#title_bar	{margin-bottom:2em;}
+h1			{font-size:2em;}
+
+.meta		{color:gray;}
+
+/*
+Posts
+----------------------------------------------------------*/
+ul.posts_list,
+ul.comments_list {list-style-type:none;margin-left:0;}
+
+.posts_list li	{border-bottom:dotted silver 1px;padding:2em 1em;}
+
+.posts_list li.even	{background:#eee;}
+
+body.posts .posts_list h4	{font-size:1.4em;margin-bottom:1em;}
+
+/*
+Comments index
+----------------------------------------------------------*/
+body.comments .index #primary .comments_list li	{float:left;margin:1em;width:200px;height:200px;border:solid silver 1px;}
+body.comments .index #primary .comments_list .detail	{margin:1em;}
+body.comments .index #primary .comments_list strong		{display:block;margin-bottom:1em;}
+body.comments .index #primary .comments_list .odd		{background:#eee;}
+
+body.posts .show .comments_list li	{border:solid silver 1px;padding:1em;margin:1em 0;}
+body.posts .show .comments_list a	{color:red;}
+/*
+Hacks
+----------------------------------------------------------*/
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+
+
+html[xmlns] .clearfix {
+    display: block;
+}
+
+* html .clearfix {
+    height: 1%;
+}
+.clearfix {
+        display:inline-block;
+}
+.clearfix {
+        display:block;
+}
+/*
+Pagination
+--------------------------------------------------------------*/
+.flickr_pagination {
+  text-align: center;
+  padding: .3em; }
+  .flickr_pagination a, .flickr_pagination span {
+    padding: .2em .5em; }
+  .flickr_pagination span.disabled {
+    color: #AAA; }
+  .flickr_pagination span.current {
+    font-weight: bold;
+    color: #FF0084; }
+  .flickr_pagination a {
+    border: 1px solid #DDDDDD;
+    color: #0063DC;
+    text-decoration: none; }
+    .flickr_pagination a:hover, .flickr_pagination a:focus {
+      border-color: #003366;
+      background: #0063DC;
+      color: white; }
+  .flickr_pagination .page_info {
+    color: #aaa;
+    padding-top: .8em; }
+  .flickr_pagination .prev_page, .flickr_pagination .next_page {
+    border-width: 2px; }
+  .flickr_pagination .prev_page {
+    margin-right: 1em; }
+  .flickr_pagination .next_page {
+    margin-left: 1em; }
+
+

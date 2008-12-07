@@ -1,0 +1,22 @@
+<div class="bordered_div js_publish_control">
+
+	<p>
+		<%= f.label :is_published, 'Publish' %>
+		<%= f.check_box :is_published, :class => 'js_date_toggle' %>
+	</p>
+	<div class="publish_dates">
+		<p>
+			<%= f.label :publish_at, 'from' %> <%= f.datetime_select :publish_at %>
+		</p>
+		<p>
+			<label for="js_end_date_toggle">end date?</label>
+			<%= check_box_tag 'js_end_date_toggle',1,!f.object.unpublish_at.blank?,:class => 'js_end_date_toggle hidden' %>
+			<%= f.hidden_field :unpublish_at, :value => '',:class => "js_hidden_end" %>
+			<span class="js_end_date <%= f.object.unpublish_at.blank? ? 'js_hide' : 'js_show' %>">
+				<%= f.datetime_select :unpublish_at,:default => 1.month.from_now %>
+				<em>This <%= f.object.class.name %> will be published until this date. Warning: caching means that published content may remain up to 10 minutes after expiry time.</em>
+			</span>
+		</p>
+
+	</div>
+</div>

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<%= stylesheet_link_tag 'admin' %>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>                                                                                    
+	<%= javascript_include_tag 'application' %>
+	<title><%= controller.controller_name %> | <%= controller.action_name %></title>
+	
+</head>
+
+<body class="<%= controller.controller_name %>">
+	
+	<div id="wrapper" class="<%= controller.action_name %>">
+		<div id="header">
+			<div class="main_width">
+				<div class="clearfix">
+					<h2 id="logo" class="column"><a href="/">Your brand here</a></h2>
+					<ul class="clearfix menu column_right" id="session_bar">
+						<li><%= link_to 'my profile','#' %></li>
+						<li><%= link_to 'users','#' %></li>
+						<li><%= link_to 'settings','#' %></li>
+						<li><%= link_to 'logout','#', :class => 'logout' %></li>
+					</ul>
+				</div>
+
+				<ul id="nav" class="clearfix menu">
+					<li class="<%= 'current' if controller.controller_name == 'posts' %>">
+						<%= link_to 'posts',posts_path %>
+					</li>
+					<li class="<%= 'current' if controller.controller_name == 'comments' %>">
+						<%= link_to 'comments',comments_path %>
+					</li>
+				</ul><!-- /nav -->
+			</div>
+		</div>
+		
+		<div id="main" class="main_width">
+			<div id="primary">
+				<%= yield %>
+			</div>
+			<div id="secondary">
+				<%= yield :secondary %>
+			</div>
+		</div><!-- /main -->
+	</div>
+
+</body>
+</html>

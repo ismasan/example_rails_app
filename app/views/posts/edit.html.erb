@@ -1,0 +1,14 @@
+<% form_for @post do |f| %>
+	<p>
+		<%= f.label :title, 'title' %>
+		<%= f.text_field :title %>
+	</p>
+	<p>
+		<%= f.label :body, 'body' %>
+		<%= f.text_area :body %>
+	</p>
+	<%= render :partial => 'shared/publish_control', :locals => {:f => f} %>
+	<p>
+		<%= f.submit 'Save' %>
+	</p>
+<% end %>
