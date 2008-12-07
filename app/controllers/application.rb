@@ -13,9 +13,22 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
   
+  helper_method :resource_service
+  
   protected
   
-  def find_resources
-    resource_service.paginate(:page=>params[:page])
+  # this creates actions for each publish status, which call find_resources with the correct scope
+  def self.publish_status_actions
+    ArPublishControl::STATUSES.each do |action|
+      define_method action do
+        self.resources = find_resources(action)
+        render :action => :index
+      end
+    end
   end
+  
+  def find_resources(scope = :all)
+    resource_service.send(scope).paginate(:page => params[:page])
+  end
+  
 end

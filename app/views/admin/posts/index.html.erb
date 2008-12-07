@@ -24,11 +24,6 @@
 	<h3>Filters</h3>
 	
 	<ul class="content_filters">
-	<%= publish_status_links(Post) %>
+	<%= publish_status_links(resource_service, enclosing_resource) %>
 	</ul><!-- /filters -->
-	
-	<h3>Latest comments</h3>
-	<div class="section">
-		<%= link_to 'See all comments', admin_comments_path %>
-	</div>
 <% end %>

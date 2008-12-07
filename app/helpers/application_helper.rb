@@ -33,21 +33,25 @@ module ApplicationHelper
   
   # list of links to publish statuses for a model
   #
-  def publish_status_links(klass)
+  def publish_status_links(klass, parent=nil)
+    parent_path = parent ? "#{parent.class.name.underscore}_" : ''
     klass_name = klass.name.tableize
-    link_to_all = content_tag(:li,
-      link_to("all (#{klass.count})",send(:"admin_#{klass_name}_path"), :class => "publish_status status_all"),
-      :class => (current_page?(:action => :index) ? 'current' : '')
+    h = content_tag(:li,
+      link_to("all (#{klass.count})",send(*[:"admin_#{parent_path}#{klass_name}_path",parent].compact), 
+        :class => "publish_status status_all"),
+      :class => (controller.action_name == 'index' ? 'current' : '')
     )
-    ArPublishControl::STATUSES.inject(link_to_all) do |html,status|
+    ArPublishControl::STATUSES.inject(h) do |html,status|
       html << content_tag(:li,
         link_to("#{status} (#{klass.send(status).count})",
-          send(:"#{status}_admin_#{klass_name}_path"), 
+          send(*[:"#{status}_admin_#{parent_path}#{klass_name}_path",parent].compact), 
           :class => "publish_status status_#{status}"),
-        :class => (current_page?(:action => status) ? 'current' : '')
+        :class => (controller.action_name == status.to_s ? 'current' : '')
       )
       html
     end
+    h << content_tag(:li,link_to('&larr; back to index',send(:"admin_#{klass_name}_path"))) if parent
+    h
   end
   
 end

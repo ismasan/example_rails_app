@@ -3,7 +3,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.namespace(:admin) do |admin|
     admin.resources :comments, :collection => publish_statuses
-    admin.resources :posts, :has_many => :comments, :collection => publish_statuses
+    admin.resources :posts, :collection => publish_statuses do |post|
+      post.resources :comments, :collection => publish_statuses, :only => [:index]
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,4 +1,5 @@
-<% form_for @post do |f| %>
+<div class="section">
+<% form_for resource, :url => admin_post_path(resource) do |f| %>
 	<p>
 		<%= f.label :title, 'title' %>
 		<%= f.text_field :title %>
@@ -12,3 +13,4 @@
 		<%= f.submit 'Save' %>
 	</p>
 <% end %>
+</div>

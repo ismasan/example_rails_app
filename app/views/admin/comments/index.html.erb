@@ -1,21 +1,22 @@
-<div id="title_bar">
-	<h1>All Comments</h1>
+<div class="section title_bar">
+	<h1><%= (enclosing_resource ? "Comments for &quot;%s&quot;"%h(enclosing_resource.title) : 'All comments') %></h1>
 </div>
-
 <!-- Use rails convention for collection partials -->
 
-<ul class="index">
+<ul class="index section">
 	<%= render :partial => resources %>
 </ul>
 
-<%= will_paginate resources, :class => 'flickr_pagination' %>
+<%= will_paginate resources, :class => 'pager section' %>
 
 <% content_for :secondary do %>
 	<div class="section">
-		<h3>Latest comments</h3>
-		<ul class="comments_list clearfix">
-			<%= render :partial => Comment.recent(5) %>
-		</ul>
-		<%= link_to 'See all comments', admin_comments_path %>
+		<%= link_to 'new comment',new_admin_comment_path %>
 	</div>
+	
+	<h3>Filters</h3>
+	
+	<ul class="content_filters">
+	<%= publish_status_links(resource_service, enclosing_resource) %>
+	</ul><!-- /filters -->
 <% end %>

@@ -7,7 +7,8 @@
 		<h4><%= link_to h(post.title), admin_post_path(post) %></h4>
 		<%= simple_format(truncate(post.body,200)) %>
 		<p class="meta">
-			Posted on <%= post.created_at.to_s(:short) %> | <%= post.comments.count %> comments.
+			Posted on <%= post.created_at.to_s(:day_month_year) %> | 
+			<%= link_to pluralize(post.comments.count,'comment'),admin_post_comments_path(post) %>.
 		</p>
 	</div>
 </li>
