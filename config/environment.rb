@@ -27,7 +27,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "mislav-will_paginate", :source => "http://gems.github.com", :lib => 'will_paginate'
   config.gem "ismasan-sluggable_finder", :lib => 'sluggable_finder'
-  config.gem 'ismasan-ar_publish_control',:lib => 'ar_publish_control',:source => "http://gems.github.com"
+  config.gem 'ar_publish_control',:lib => 'ar_publish_control'#,:source => "http://gems.github.com"
   config.gem "haml", :version => '>=2.0.4'
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -68,3 +68,5 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
 end
+
+ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.update(:day_month_year => '%d %B %Y')

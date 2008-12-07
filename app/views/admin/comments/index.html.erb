@@ -1,5 +1,5 @@
-<div id="title_bar" class="section">
-	<h1>All Posts</h1>
+<div id="title_bar">
+	<h1>All Comments</h1>
 </div>
 
 <!-- Use rails convention for collection partials -->
@@ -14,8 +14,8 @@
 	<div class="section">
 		<h3>Latest comments</h3>
 		<ul class="comments_list clearfix">
-			<%= render :partial => Comment.published.recent(5) %>
+			<%= render :partial => Comment.recent(5) %>
 		</ul>
-		<%= link_to 'See all comments', comments_path %>
+		<%= link_to 'See all comments', admin_comments_path %>
 	</div>
 <% end %>

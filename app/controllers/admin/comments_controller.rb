@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Admin::CommentsController < Admin::AdminController
   resources_controller_for :comments
   
   def find_resources

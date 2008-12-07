@@ -1,0 +1,34 @@
+<div class="section title_bar clearfix">
+	<h1 class="column">Posts: <%= controller.action_name %></h1>
+	<div class="menu column_right title_options">
+		sort by: 
+		<%= link_to 'edede', '#' %> | 
+		<%= link_to 'edede', '#', :class => 'current' %> | 
+		<%= link_to 'edede', '#' %>
+	</div>
+</div>
+
+<!-- Use rails convention for collection partials -->
+
+<ul class="index section">
+	<%= render :partial => resources %>
+</ul>
+
+<%= will_paginate resources, :class => 'pager clearfix section' %>
+
+<% content_for :secondary do %>
+	<div class="section">
+		<%= link_to 'new post',new_admin_post_path %>
+	</div>
+	
+	<h3>Filters</h3>
+	
+	<ul class="content_filters">
+	<%= publish_status_links(Post) %>
+	</ul><!-- /filters -->
+	
+	<h3>Latest comments</h3>
+	<div class="section">
+		<%= link_to 'See all comments', admin_comments_path %>
+	</div>
+<% end %>

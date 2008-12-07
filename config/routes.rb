@@ -1,7 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :comments
-
-  map.resources :posts, :has_many => :comments
+  publish_statuses = ArPublishControl::STATUSES.inject({}){|a,b|a[b] = :get;a}
+  
+  map.namespace(:admin) do |admin|
+    admin.resources :comments, :collection => publish_statuses
+    admin.resources :posts, :has_many => :comments, :collection => publish_statuses
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
 

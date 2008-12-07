@@ -13,15 +13,15 @@ html, body, div, p {
   font-weight: normal;
   color: #333333; }
 
-input, select, textarea {
-  font-family: "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
-  font-weight: normal;
-  color: #222222; }
-
 body {
   font-size: 62.5%;
   text-align: center;
   background: #eee; }
+
+input, select, textarea {
+  font-family: "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+  font-weight: normal;
+  color: #222222; }
 
 .main_width {
   width: 960px;
@@ -32,7 +32,8 @@ body {
   margin-left: 0;
   list-style-type: none; }
   .menu li {
-    float: left;
+    display: inline-block;
+    vertical-align: top;
     margin-right: 1em; }
 
 #header a {
@@ -41,9 +42,16 @@ body {
     color: #fff; }
 
 #main a {
-  color: blue; }
+  color: #194183; }
   #main a:hover {
-    color: orange; }
+    color: #fff;
+    background-color: #194183;
+    text-decoration: none; }
+
+#main a.current {
+  color: #fff;
+  text-decoration: none;
+  background-color: black; }
 
 #logo {
   font-size: 2em; }
@@ -85,7 +93,8 @@ body {
 #primary {
   background: #fff;
   border: solid silver 8px;
-  margin-right: 250px; }
+  margin-right: 230px;
+  min-height: 300px; }
   #primary .section {
     margin-left: 2em;
     margin-right: 2em; }
@@ -95,10 +104,43 @@ body {
   top: 0;
   right: 0;
   width: 230px; }
+  #secondary .section {
+    margin-left: 20px; }
+  #secondary h3 {
+    margin-left: 20px;
+    font-size: 1.5em; }
+
+.content_filters {
+  list-style-type: none;
+  margin-left: 0;
+  font-size: 1.2em;
+  margin-bottom: 20px; }
+  .content_filters li {
+    padding: .5em 0 .5em 20px; }
+  .content_filters a {
+    width: 10em;
+    text-align: left;
+    padding-left: .5em;
+    text-decoration: none; }
+
+#main a.publish_status {
+  color: #fff; }
+
+#main .content_filters .current {
+  background-color: silver; }
 
 ul.index {
   list-style-type: none;
   margin-left: 0; }
+
+.title_bar {
+  padding-top: 5px;
+  padding-bottom: 5px; }
+
+.title_options li {
+  margin-right: .25em; }
+  .title_options li a {
+    text-decoration: none; }
 
 .listing {
   position: relative;
@@ -120,8 +162,11 @@ ul.index {
 .thumb img {
   padding: 2px;
   border: solid silver 1px; }
-.thumb:hover img {
-  border-color: gray; }
+.thumb:hover {
+  background-color: #fff; }
+  .thumb:hover img {
+    border-color: gray;
+    background-color: #fff; }
 
 .publish_status {
   display: inline-block;
@@ -130,20 +175,37 @@ ul.index {
   text-align: center;
   color: #fff; }
 
+.status_all {
+  background: gray; }
+
 .status_published {
   background: green; }
 
 .status_draft {
-  background: red; }
+  background: orange; }
 
 .status_upcoming {
   background: pink; }
 
 .status_expired {
-  background: silver; }
+  background: red; }
 
 p.meta {
   margin: 0; }
+
+.pager {
+  text-align: center;
+  font-size: 1.5em; }
+  .pager a, .pager span {
+    display: inline-block;
+    margin-right: .25em;
+    padding: .25em;
+    border: solid silver 1px;
+    text-decoration: none; }
+  .pager .current {
+    color: #fff;
+    background: gray;
+    border-color: gray; }
 
 .clearfix:after {
   content: ".";

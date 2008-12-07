@@ -5,8 +5,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<%= stylesheet_link_tag 'admin' %>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>                                                                                    
-	<%= javascript_include_tag 'application' %>
+	<%= javascript_include_tag 'jquery','application' %>
 	<title><%= controller.controller_name %> | <%= controller.action_name %></title>
 	
 </head>
@@ -28,10 +27,10 @@
 
 				<ul id="nav" class="clearfix menu">
 					<li class="<%= 'current' if controller.controller_name == 'posts' %>">
-						<%= link_to 'posts',posts_path %>
+						<%= link_to 'posts',admin_posts_path %>
 					</li>
 					<li class="<%= 'current' if controller.controller_name == 'comments' %>">
-						<%= link_to 'comments',comments_path %>
+						<%= link_to 'comments',admin_comments_path %>
 					</li>
 				</ul><!-- /nav -->
 			</div>
