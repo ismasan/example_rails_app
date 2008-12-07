@@ -1,7 +1,16 @@
-<li class="<%= cycle('odd','even') %> position_<%= comment_counter %>">
+<li class="listing clearfix section <%= cycle('odd','even') %> position_<%= comment_counter %>">
+	<%= link_to thumbnail_for(comment), comment, :class => 'thumb media' %>
 	<div class="detail">
-	<strong><%= link_to 'Some user said',post_comment_path(comment.post,comment) %> on 
-	<em><%= comment.created_at.to_s(:short) %></em>:</strong>
-	<%= simple_format(comment.body) %>
+		<p class="publish_info">
+			<%= publish_status_for(comment) %>
+		</p>
+		<h4>
+			#<%= link_to comment.id, comment %> on <%= link_to h(comment.post.title), 
+			post_path(comment.post)+"##{dom_id(comment)}" %>
+		</h4>
+		<%= simple_format(truncate(comment.body,200)) %>
+		<p class="meta">
+			by ismasan.
+		</p>
 	</div>
 </li>

@@ -9,7 +9,7 @@ module ApplicationHelper
     else
       File.join('placeholders',model.class.name.tableize,"#{size}.png")
     end
-    image_tag path, :alt => model.title
+    image_tag path, :alt => (model.respond_to?(:title) ? h(model.title) : model.class.name)
   end
   
   # :published

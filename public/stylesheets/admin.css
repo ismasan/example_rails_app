@@ -101,12 +101,16 @@ ul.index {
   margin-left: 0; }
 
 .listing {
-  position: relative; }
+  position: relative;
+  margin-bottom: 1em;
+  min-height: 80px; }
   .listing .media {
     position: absolute;
     top: 0;
     left: 0; }
   .listing p {
+    margin-bottom: .5em; }
+  .listing .meta, .listing .publish_info {
     margin-bottom: 0; }
   .listing .detail {
     margin-left: 90px; }
