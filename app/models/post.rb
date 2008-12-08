@@ -6,8 +6,8 @@ class Post < ActiveRecord::Base
   
   publish_control
   
-  def self.per_page
-    10
-  end
+  extend CommonAr::ClassMethods
+  
+  sortable_with :title, :publish_at, :created_at
   
 end
