@@ -9,5 +9,8 @@ class Comment < ActiveRecord::Base
   
   publish_control
   
+  extend CommonAr::ClassMethods
+  
+  sortable_with :publish_at, :created_at
   
 end

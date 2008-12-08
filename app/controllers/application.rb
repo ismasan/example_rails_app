@@ -29,8 +29,7 @@ class ApplicationController < ActionController::Base
   
   def find_resources(scope = :all)
     params[:sort] ||= resource_service.sortable_fields.keys.first
-    resource_service.sort_by(params[:sort]).paginate(:page => params[:page])
-    #resource_service.send(scope).sort_by(params[:sort]).paginate(:page => params[:page])
+    resource_service.sort_by(params[:sort]).send(scope).paginate(:page => params[:page])
   end
   
 end

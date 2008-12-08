@@ -36,15 +36,16 @@ module ApplicationHelper
   def publish_status_links(klass, parent=nil)
     parent_path = parent ? "#{parent.class.name.underscore}_" : ''
     klass_name = klass.name.tableize
+    pars = params.except(:page)
     h = content_tag(:li,
-      link_to("all (#{klass.count})",send(*[:"admin_#{parent_path}#{klass_name}_path",parent].compact), 
+      link_to("all (#{klass.count})",send(*[:"admin_#{parent_path}#{klass_name}_path",parent,pars].compact), 
         :class => "publish_status status_all"),
       :class => (controller.action_name == 'index' ? 'current' : '')
     )
     ArPublishControl::STATUSES.inject(h) do |html,status|
       html << content_tag(:li,
         link_to("#{status} (#{klass.send(status).count})",
-          send(*[:"#{status}_admin_#{parent_path}#{klass_name}_path",parent].compact), 
+          send(*[:"#{status}_admin_#{parent_path}#{klass_name}_path",parent,pars].compact), 
           :class => "publish_status status_#{status}"),
         :class => (controller.action_name == status.to_s ? 'current' : '')
       )
