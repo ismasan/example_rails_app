@@ -1,8 +1,8 @@
 class Comment < ActiveRecord::Base
-  belongs_to :post
+  belongs_to :post, :counter_cache => true
   
   named_scope :recent, lambda{|limit|
-    {:order => 'created_at desc',:limit => limit}
+    {:limit => limit}
   }
   
   named_scope :desc, :order => 'created_at desc'

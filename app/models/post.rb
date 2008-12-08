@@ -1,8 +1,6 @@
 class Post < ActiveRecord::Base
   
-  #has_many :comments, :dependent => :destroy
-  
-  has_many :comments, :class_name => 'Comment', :conditions => Comment.published_conditions
+  has_many :comments, :dependent => :destroy
   
   sluggable_finder :title
   
