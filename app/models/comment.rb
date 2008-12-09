@@ -5,7 +5,6 @@ class Comment < ActiveRecord::Base
     {:limit => limit}
   }
   
-  named_scope :desc, :order => 'created_at desc'
   
   publish_control
   

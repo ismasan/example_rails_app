@@ -9,12 +9,11 @@ module CommonAr
       end
       write_inheritable_attribute(:sortable_fields,sorts)
       class_inheritable_reader :sortable_fields
-      named_scope :sort_by, lambda { |*args|
+      named_scope :sort_with, lambda { |*args|
         return {} if args.compact.blank?
         {:order => sortable_fields[args.first.to_sym]}
       }
     end
   end
-  
   
 end

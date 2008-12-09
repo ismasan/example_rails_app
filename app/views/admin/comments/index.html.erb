@@ -1,5 +1,11 @@
-<div class="section title_bar">
-	<h1><%= (enclosing_resource ? "Comments for &quot;%s&quot;"%h(enclosing_resource.title) : 'All comments') %></h1>
+<div class="section title_bar clearfix">
+	<h1 class="column"><%= (enclosing_resource ? "Comments for &quot;%s&quot;"%truncate(h(enclosing_resource.title),:length=>10) : 'All comments') %></h1>
+	<div class="menu column_right title_options">
+		sort by:
+		<%= resource_service.sortable_fields.collect do |key,value|
+			link_to key, params.dup.update(:sort => key), :class => ((params[:sort].to_s==key.to_s) ? 'current' : '')
+		end.join(' | ') %>
+	</div>
 </div>
 <!-- Use rails convention for collection partials -->
 

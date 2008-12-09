@@ -36,7 +36,7 @@ module ApplicationHelper
   def publish_status_links(klass, parent=nil)
     parent_path = parent ? "#{parent.class.name.underscore}_" : ''
     klass_name = klass.name.tableize
-    pars = params.except(:page)
+    pars = {:sort => params[:sort]}
     h = content_tag(:li,
       link_to("all (#{klass.count})",send(*[:"admin_#{parent_path}#{klass_name}_path",parent,pars].compact), 
         :class => "publish_status status_all"),
@@ -51,7 +51,7 @@ module ApplicationHelper
       )
       html
     end
-    h << content_tag(:li,link_to('&larr; back to index',send(:"admin_#{klass_name}_path"))) if parent
+    h << content_tag(:li,link_to("&larr; back to %s index"%klass_name,send(:"admin_#{klass_name}_path"))) if parent
     h
   end
   
