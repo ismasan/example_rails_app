@@ -17,7 +17,7 @@
 	<%= link_to "%s total"%resource.comments.count, admin_post_comments_path(resource) %>
 	
 	<ul class="index">
-		<%= render :partial => resource.comments.recent(5).desc %>
+		<%= render :partial => resource.comments.recent(5) %>
 	</ul>
 	
 </div>
