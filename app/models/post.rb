@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   
   extend CommonAr::ClassMethods
   
-  sortable_with :title, :publish_at, :created_at
+  sortable_with :title, :publish_at, :comments_count
   
   likeable_with :title, :body
   
