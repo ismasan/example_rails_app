@@ -12,4 +12,6 @@ class Comment < ActiveRecord::Base
   
   sortable_with :publish_at, :created_at
   
+  likeable_with :body
+  
 end

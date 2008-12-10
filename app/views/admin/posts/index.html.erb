@@ -21,6 +21,13 @@
 		<%= link_to 'new post',new_admin_post_path %>
 	</div>
 	
+	<h3>Search</h3>
+	<div class="section">
+	<% form_tag params, :method => :get do %>
+	<input type="text" name="q" value="<%= params[:q] %>" />
+	<% end %>
+	</div>
+	
 	<h3>Filters</h3>
 	
 	<ul class="content_filters">

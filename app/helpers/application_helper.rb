@@ -36,15 +36,23 @@ module ApplicationHelper
   def publish_status_links(klass, parent=nil)
     parent_path = parent ? "#{parent.class.name.underscore}_" : ''
     klass_name = klass.name.tableize
-    pars = {:sort => params[:sort]}
+    pars = {:sort => params[:sort], :q => params[:q]}
     h = content_tag(:li,
-      link_to("all (#{klass.count})",send(*[:"admin_#{parent_path}#{klass_name}_path",parent,pars].compact), 
+      link_to("all (#{klass.count})",send(*[:"admin_#{parent_path}#{klass_name}_path",parent,pars.except(:q)].compact), 
         :class => "publish_status status_all"),
-      :class => (controller.action_name == 'index' ? 'current' : '')
+      :class => ((controller.action_name == 'index' && pars[:q].blank?) ? 'current' : '')
     )
+    if pars[:q]
+      h << content_tag(:li,
+        link_to("all results (#{klass.like(pars[:q]).count})",
+          send(*[:"admin_#{parent_path}#{klass_name}_path",parent,pars].compact), 
+          :class => "publish_status status_all"),
+        :class => (controller.action_name == 'index' ? 'current' : '')
+      )
+    end
     ArPublishControl::STATUSES.inject(h) do |html,status|
       html << content_tag(:li,
-        link_to("#{status} (#{klass.send(status).count})",
+        link_to("#{status} (#{klass.send(status).like(pars[:q]).count})",
           send(*[:"#{status}_admin_#{parent_path}#{klass_name}_path",parent,pars].compact), 
           :class => "publish_status status_#{status}"),
         :class => (controller.action_name == status.to_s ? 'current' : '')

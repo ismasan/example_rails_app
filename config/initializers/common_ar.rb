@@ -1,6 +1,10 @@
 module CommonAr
   
   module ClassMethods
+    # sort with
+    #
+    # sortable_with :title, :body, :created_at
+    #
     def sortable_with(*fields)
       sorts = fields.inject({}) do |h,f|
         h[:"#{f}_asc"] = "#{f} ASC"
@@ -14,6 +18,22 @@ module CommonAr
         {:order => sortable_fields[args.first.to_sym]}
       }
     end
+    
+    # search with SQL LIKE
+    #
+    # likeable_with :title, :body
+    #
+    def likeable_with(*fields)
+      # TODO: validate that schema has these fields
+      named_scope :like, lambda {|q|
+        return {} if q.blank? || !q.respond_to?(:to_s)
+        t = ActiveRecord::Base.connection.quote("%#{q}%")
+        conditions = fields.collect{|f| "#{f} LIKE #{t}" }.join(' OR ')
+        {:conditions => conditions}
+      }
+    end
+    
   end
+
   
 end

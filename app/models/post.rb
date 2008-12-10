@@ -10,4 +10,6 @@ class Post < ActiveRecord::Base
   
   sortable_with :title, :publish_at, :created_at
   
+  likeable_with :title, :body
+  
 end
