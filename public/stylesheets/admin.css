@@ -123,6 +123,12 @@ input, select, textarea {
     padding-left: .5em;
     text-decoration: none; }
 
+.link_list {
+  text-align: center;
+  padding: .25em;
+  border: solid silver 1px;
+  border-width: 1px 0; }
+
 #main a.publish_status {
   color: #fff; }
 
@@ -134,8 +140,9 @@ ul.index {
   margin-left: 0; }
 
 .title_bar {
-  padding-top: 5px;
-  padding-bottom: 5px; }
+  padding: 5px 18px;
+  background: #eee;
+  margin: 2px; }
 
 .title_options li {
   margin-right: .25em; }

@@ -12,6 +12,15 @@ module ApplicationHelper
     image_tag path, :alt => (model.respond_to?(:title) ? h(model.title) : model.class.name)
   end
   
+  # sort_links for this controller's resource_service
+  # service is expected to repond_to :sortable_fields
+  #
+  def sort_links
+    resource_service.sortable_fields.collect do |key,value|
+    	link_to key, params.dup.update(:sort => key), :class => ((params[:sort].to_s==key.to_s) ? 'current' : '')
+    end.join(' | ')
+  end
+  
   # :published
   # :expired
   # :upcoming
