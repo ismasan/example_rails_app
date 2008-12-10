@@ -18,20 +18,5 @@
 <%= will_paginate resources, :class => 'pager section' %>
 
 <% content_for :secondary do %>
-	<div class="section">
-		<%= link_to 'new comment',new_admin_comment_path %>
-	</div>
-	
-	<h3>Search</h3>
-	<div class="section">
-	<% form_tag params, :method => :get do %>
-	<input type="text" name="q" value="<%= params[:q] %>" />
-	<% end %>
-	</div>
-	
-	<h3>Filters</h3>
-	
-	<ul class="content_filters">
-	<%= publish_status_links(resource_service, enclosing_resource) %>
-	</ul><!-- /filters -->
+	<%= render :partial => 'admin/shared/index_sidebar' %>
 <% end %>

@@ -28,15 +28,31 @@ module ApplicationHelper
   #
   def publish_status_for(m)
     s = if m.upcoming?
-      "<span class='publish_status status_upcoming'>UPCOMING</span> on #{m.publish_at.to_s(:day_month_year)}"
+      :upcoming
     elsif m.expired?
-      "<span class='publish_status status_expired'>EXPIRED</span> on #{m.unpublish_at.to_s(:day_month_year)}"
+      :expired
     elsif m.published?
-      ss = "<span class='publish_status status_published'>PUBLISHED</span> on #{m.publish_at.to_s(:day_month_year)}"
-      ss << " &rarr; #{m.unpublish_at.to_s(:day_month_year)}" if m.unpublish_at
-      ss
+      :published
     else
-      "<span class='publish_status status_draft'>DRAFT</span>"
+      :draft
+    end
+  end
+  
+  def publish_label_for(m)
+    s = publish_status_for(m).to_s
+    content_tag :span, s.to_s.upcase, :class => ['publish_status',"status_#{s}"].join(' ')
+  end
+  
+  def publish_dates_for(m)
+    s = case publish_status_for(m)
+    when :upcoming
+      "on #{m.publish_at.to_s(:day_month_year)}"
+    when :expired
+      "on #{m.unpublish_at.to_s(:day_month_year)}"
+    when :published
+      "on #{m.publish_at.to_s(:day_month_year)}" + (m.unpublish_at.blank? ? '' : " &rarr; #{m.unpublish_at.to_s(:day_month_year)}")
+    else
+      "created on #{m.created_at.to_s(:day_month_year)}"
     end
   end
   

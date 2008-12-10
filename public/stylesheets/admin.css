@@ -153,6 +153,9 @@ ul.index {
   position: relative;
   margin-bottom: 1em;
   min-height: 80px; }
+  .listing .publish_status {
+    font-size: 10px;
+    margin-right: .5em; }
   .listing .media {
     position: absolute;
     top: 0;
@@ -160,11 +163,13 @@ ul.index {
   .listing p {
     margin-bottom: .5em; }
   .listing .meta, .listing .publish_info {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    color: gray; }
   .listing .detail {
     margin-left: 90px; }
   .listing h4 {
-    font-size: 1.5em; }
+    font-size: 1.5em;
+    margin-bottom: .25em; }
 
 .thumb img {
   padding: 2px;
