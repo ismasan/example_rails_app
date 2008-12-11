@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081130175015) do
+ActiveRecord::Schema.define(:version => 20081210234341) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
@@ -29,9 +29,21 @@ ActiveRecord::Schema.define(:version => 20081130175015) do
     t.string   "slug"
     t.datetime "publish_at"
     t.datetime "unpublish_at"
-    t.boolean  "is_published", :default => true
+    t.boolean  "is_published",   :default => true
+    t.integer  "comments_count", :default => 0
+    t.integer  "user_id"
   end
 
   add_index "posts", ["slug"], :name => "index_posts_on_slug"
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "permalink"
+    t.string   "screen_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

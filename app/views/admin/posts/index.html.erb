@@ -1,7 +1,9 @@
 <div class="title_bar clearfix">
-	<h1 class="column">Posts: <%= controller.action_name %></h1>
+	<h1 class="column">
+		<%= (enclosing_resource ? "Posts for #{enclosing_resource.class.name} &quot;%s&quot;"%truncate(h(enclosing_resource.title),:length=>200) : 'Posts') %> &rarr; <%= controller.action_name %>
+	</h1>
 	<div class="menu column_right title_options">
-		<%= link_to 'new post',new_resource_path %>
+		<%= link_to 'new post',new_admin_post_path %>
 	</div>
 </div>
 
@@ -17,5 +19,6 @@
 <%= will_paginate resources, :class => 'pager clearfix section' %>
 
 <% content_for :secondary do %>
+	<%= render :partial => 'admin/shared/search_box' %>
 	<%= render :partial => 'admin/shared/index_sidebar' %>
 <% end %>

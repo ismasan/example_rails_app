@@ -6,6 +6,10 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :posts, :collection => publish_statuses do |post|
       post.resources :comments, :collection => publish_statuses, :only => [:index]
     end
+    
+    admin.resources :users do |users|
+      users.resources :posts, :collection => publish_statuses, :only => [:index]
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

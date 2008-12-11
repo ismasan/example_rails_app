@@ -1,0 +1,11 @@
+<li class="listing clearfix <%= cycle('odd','even') %> position_<%= user_counter %>">
+	<%= link_to thumbnail_for(user), admin_user_path(user), :class => 'thumb media' %>
+	<div class="detail">
+		<h4><%= link_to h(user.screen_name), admin_user_path(user) %></h4>
+		<%= auto_link(user.email) %>
+		<p class="meta">
+			created on <%= user.created_at.to_s(:day_month_year) %> | 
+			<%= link_to pluralize(user.posts.count, 'post'), admin_user_posts_path(user) %>
+		</p>
+	</div>
+</li>

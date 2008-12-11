@@ -3,9 +3,14 @@ namespace :db do
   task :populate => :environment do
     require 'faker'
     Post.destroy_all
+    u = User.create do |user|
+      user.name = 'ismael celis'
+      user.email = 'ismaelct@gmail.com'
+      user.screen_name = 'ismasan'
+    end
     
     1.upto(50) do |i|
-      p = Post.create do |post|
+      p = u.posts.create do |post|
         post.title = Faker::Lorem.words.join(' ')
         post.body = Faker::Lorem.paragraphs.join('\rn\rn')
         set_dates(post,i)

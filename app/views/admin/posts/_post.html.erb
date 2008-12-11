@@ -5,7 +5,8 @@
 		<%= simple_format(truncate(post.body,:length => 200)) %>
 		<p class="meta">
 			<%= publish_dates_for(post) %> | 
-			<%= link_to pluralize(post.comments.count,'comment'),admin_post_comments_path(post) %>.
+			<%= link_to pluralize(post.comments.count,'comment'),admin_post_comments_path(post) %> | 
+			by <%= link_to h(post.user.screen_name), admin_user_path(post.user) %>
 		</p>
 	</div>
 </li>
